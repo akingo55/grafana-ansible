@@ -1,0 +1,11 @@
+apiVersion: 1
+
+datasources:
+  - name: cloudwatch
+    type: cloudwatch
+    jsonData:
+      authType: keys
+      defaultRegion: ap-northeast-1
+    secureJsonData:
+      accessKey: $AWS_ACCESSKEY
+      secretKey: $AWS_SECRETKEY
