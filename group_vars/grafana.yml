@@ -1,0 +1,8 @@
+---
+#grafana variables
+GRAFANA_DOMAIN_NAME: grafana.ak-eng.work
+DASHBOAD_PATH: /var/lib/grafana/dashboards/
+DASHBOARD_LIST:
+  - amazon-ec2_rev1.json
+  - amazon-ebs_rev1.json
+  - aws-billing_rev13.json

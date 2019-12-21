@@ -3,6 +3,18 @@
   yum:
     name: grafana
 
+- name: configure grafana ini file
+  template:
+    src:
+    dest:
+
+- name: copy cloudwatch dashboard
+  copy:
+    src: '{{ item }}'
+    dest: '{{ DASHBOAD_PATH }}'
+    mode: 0755
+  with_items: '{{ DASHBOARD_LIST }}'
+
 - name: copy provisioning file for dashboard
   copy:
     src: cloudwatch-dashboard.yml
