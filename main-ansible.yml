@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: true
+  become_user: root
+  vars:
+    HOME_DIR: /home/ec2-user
+    GRAFANA_INSTALL_URL: https://dl.grafana.com/oss/release/grafana-6.5.2-1.x86_64.rpm
+    GRAFANA_INSTALL_RPM: grafana-6.5.2-1.x86_64.rpm
+    GRAFANA_DOMAIN_NAME: grafana.ak-eng.work
+    DASHBOAD_PATH: /var/lib/grafana/dashboards/
+    DASHBOARD_LIST:
+      - amazon-ec2_rev1.json
+      - amazon-ebs_rev1.json
+      - aws-billing_rev13.json
+  roles:
+    - grafana
+    - nginx
