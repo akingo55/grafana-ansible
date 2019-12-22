@@ -5,7 +5,7 @@
 
 - name: copy file nginx.conf
   copy:
-    src: nginx.conf
-    dest: /etc/nginx/nginx.conf
+    src: grafana.conf
+    dest: /etc/nginx/conf.d/
     mode: 0644
   notify: restart nginx
