@@ -1,12 +1,18 @@
 ---
+- name: Download grafana
+  get_url:
+    url: '{{ GRAFANA_INSTALL_URL }}'
+    dest: '{{ HOME_DIR }}' 
+
 - name: install grafana
   yum:
-    name: grafana
+    name: '{{ HOME_DIR }}/{{ GRAFANA_INSTALL_RPM }}'
 
 - name: configure grafana ini file
   template:
-    src:
-    dest:
+    src: grafana.ini.j2
+    dest: /etc/grafana/grafana.ini
+    mode: 0640
 
 - name: copy cloudwatch dashboard
   copy:
@@ -19,12 +25,12 @@
   copy:
     src: cloudwatch-dashboard.yml
     dest: /etc/grafana/provisioning/dashboards/
-    mode: 0640
+    mode: 0755
   notify: start grafana
 
 - name: copy provisioning file for datasource
   copy:
     src: cloudwatch-datasource.yml
     dest: /etc/grafana/provisioning/datasources/
-    mode: 0640
+    mode: 0755
   notify: start grafana
